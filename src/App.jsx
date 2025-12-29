@@ -61,14 +61,14 @@ const Portfolio = () => {
       category: "Web3 / React",
       description: "A Complete Presale website for BTCINU built on the Ethereum blockchain, raising over $687,000 in a fully sold-out token sale.",
       tags: ["React", "Web3.js", "CSS", "Ether.js"],
-      image: "./public/btcinu.png"
+      image: "/public/btcinu.png"
     },
     {
       title: "Luxury Fashion E-Commerce",
       category: "Shopify / Liquid",
       description: "Custom Shopify theme development for a high-end fashion brand, resulting in a 40% increase in mobile conversions.",
       tags: ["Shopify", "Liquid", "JS", "CSS3"],
-      image: "./public/landpage3.png"
+      image: "/public/landpage3.png"
     },
     {
       title: "Cirqle Landing Page",
