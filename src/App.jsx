@@ -68,14 +68,14 @@ const Portfolio = () => {
       category: "Shopify / Liquid",
       description: "Custom Shopify theme development for a high-end fashion brand, resulting in a 40% increase in mobile conversions.",
       tags: ["Shopify", "Liquid", "JS", "CSS3"],
-      image: "/landpage3.png"
+      image: "/example.png"
     },
     {
       title: "Cirqle Landing Page",
       category: "Custom Website",
       description: "A custom-built landing page optimized for showcasing and linking mobile apps on the Play Store and App Store.",
       tags: ["Javascript", "Tailwind", "React", "FIGMA-to-Code"],
-      image: "./public/Landingpage.png"
+      image: "/Landingpage.png"
     },
     {
       title: "NFT Marketplace",
