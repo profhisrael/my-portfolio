@@ -1,0 +1,6 @@
+# Temporarily prevent all crawlers from accessing the site
+# To allow indexing again, remove this file or update the rules
+
+
+User-agent: *
+Disallow: /
