@@ -64,11 +64,11 @@ const Portfolio = () => {
       image: "/btcinu.png"
     },
     {
-      title: "Luxury Fashion E-Commerce",
-      category: "Shopify / Liquid",
-      description: "Custom Shopify theme development for a high-end fashion brand, resulting in a 40% increase in mobile conversions.",
-      tags: ["Shopify", "Liquid", "JS", "CSS3"],
-      image: "/example.png"
+      title: "Lawn and Landscape Website",
+      category: "Wix Custom Website",
+      description: "A professional Wix website developed for a full-service landscaping company providing lawn care, snow removal, and sprinkler installation.",
+      tags: ["Wix", "Business Website", "Website Design", "Wix Studio"],
+      image: "/sss.png"
     },
     {
       title: "Cirqle Landing Page",
@@ -78,11 +78,11 @@ const Portfolio = () => {
       image: "/Landingpage.png"
     },
     {
-      title: "NFT Marketplace",
-      category: "Web3 / Solidity",
-      description: "A complete marketplace for minting and trading NFTs on the Ethereum network. Includes IPFS storage integration.",
-      tags: ["Solidity", "Hardhat", "Next.js", "IPFS"],
-      image: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&q=80&w=800"
+      title: "Airtime & Data VTU Website",
+      category: "Web Application / Financial Service",
+      description: "A VTU platform designed for fast and reliable airtime, data, and bill payment services.",
+      tags: ["VTU", "Fintech", "Payment Platform", "Web Application"],
+      image: "/vtu-website.png"
     },
     {
       title: "Real Estate Portal",
@@ -305,11 +305,11 @@ const Portfolio = () => {
             <div className="text-blue-200 text-sm">Job Success Score</div>
           </div>
           <div>
-            <div className="text-4xl font-bold mb-1">50+</div>
+            <div className="text-4xl font-bold mb-1">100+</div>
             <div className="text-blue-200 text-sm">Projects Completed</div>
           </div>
           <div>
-            <div className="text-4xl font-bold mb-1">5+</div>
+            <div className="text-4xl font-bold mb-1">7+</div>
             <div className="text-blue-200 text-sm">Years Experience</div>
           </div>
           <div>
