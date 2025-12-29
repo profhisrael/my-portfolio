@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 import { 
   Github, 
   Linkedin, 
@@ -58,7 +59,7 @@ const Portfolio = () => {
   const projects = [
     {
       title: "BTCINU Presale Website",
-      category: "Web3 / React",
+      category: "Web3 | React",
       description: "A Complete Presale website for BTCINU built on the Ethereum blockchain, raising over $687,000 in a fully sold-out token sale.",
       tags: ["React", "Web3.js", "CSS", "Ether.js"],
       image: "/btcinu.png"
@@ -79,69 +80,112 @@ const Portfolio = () => {
     },
     {
       title: "Airtime & Data VTU Website",
-      category: "Web Application / Financial Service",
+      category: "Web Application | Financial Service",
       description: "A VTU platform designed for fast and reliable airtime, data, and bill payment services.",
       tags: ["VTU", "Fintech", "Payment Platform", "Web Application"],
       image: "/vtu-website.png"
     },
     {
-      title: "Real Estate Portal",
-      category: "MERN Stack",
-      description: "Property listing platform with advanced filtering, map integration, and user authentication for agents and buyers.",
-      tags: ["React", "Redux", "Node.js", "Google Maps API"],
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800"
+      title: "Bugsbunny Presale Website",
+      category: "Web3 | Dapps",
+      description: "A presale website built from scratch, handling the UI/UX, frontend, backend, wallet integration, and smart contract deployment on the Ethereum network.",
+      tags: ["React", "Ether.js", "Solidity", "Ethereum Chain", "Remix IDE"],
+      image: "bugsbunny -Presale-Website.png"
     },
     {
-      title: "Corporate Identity Site",
-      category: "WordPress",
-      description: "High-performance custom WordPress theme for a finance firm, optimized for SEO and lead generation.",
-      tags: ["WordPress", "PHP", "ACF", "SCSS"],
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800"
+      title: "Pugcoin Presale / ICO Website",
+      category: "Cryptocurrency | Blockchain | ICO",
+      description: "A presale website built on the Ethereum chain that allows users to buy with ETH and USDT smoothly, with vesting and token claim options. Multilevel/phase presale website.",
+      tags: ["Solidity", "Smart Contract", "Presale", "ICO"],
+      image: "public/pugcoin-presale.png"
     },
-    {
-      title: "Crypto Wallet Integration",
-      category: "Web3",
-      description: "Seamless connection module for MetaMask and WalletConnect, supporting multiple chains (ETH, BSC, Polygon).",
-      tags: ["Web3.js", "Ethers.js", "React Hooks"],
-      image: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      title: "Organic Food Store",
-      category: "Shopify",
-      description: "A clean, fast-loading Shopify store for organic products with subscription functionality and custom cart drawer.",
-      tags: ["Shopify Plus", "Liquid", "JavaScript"],
-      image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      title: "Task Management App",
-      category: "React / Firebase",
-      description: "Productivity application with drag-and-drop kanban boards, real-time collaboration, and cloud syncing.",
-      tags: ["React", "Firebase", "DnD Kit", "Tailwind"],
-      image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      title: "DAO Voting System",
-      category: "Blockchain",
-      description: "Decentralized Autonomous Organization governance portal allowing token holders to create and vote on proposals.",
-      tags: ["Solidity", "React", "Graph Protocol"],
-      image: "https://images.unsplash.com/photo-1639322537228-ad7117a394bc?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      title: "Tech Blog Platform",
-      category: "Next.js / Headless CMS",
-      description: "Modern blog built with Next.js and Contentful, featuring static generation for lightning-fast page loads.",
-      tags: ["Next.js", "Contentful", "GraphQL"],
-      image: "https://images.unsplash.com/photo-1499750310159-52f0f834631b?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      title: "Fitness Tracking App",
-      category: "React Native",
-      description: "Cross-platform mobile application for tracking workouts and nutrition with social sharing features.",
-      tags: ["React Native", "Expo", "Node.js"],
-      image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=800"
-    }
+    // {
+    //   title: "Crypto Wallet Integration",
+    //   category: "Web3",
+    //   description: "Seamless connection module for MetaMask and WalletConnect, supporting multiple chains (ETH, BSC, Polygon).",
+    //   tags: ["Web3.js", "Ethers.js", "React Hooks"],
+    //   image: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&q=80&w=800"
+    // },
+    // {
+    //   title: "Organic Food Store",
+    //   category: "Shopify",
+    //   description: "A clean, fast-loading Shopify store for organic products with subscription functionality and custom cart drawer.",
+    //   tags: ["Shopify Plus", "Liquid", "JavaScript"],
+    //   image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=800"
+    // },
+    // {
+    //   title: "Task Management App",
+    //   category: "React / Firebase",
+    //   description: "Productivity application with drag-and-drop kanban boards, real-time collaboration, and cloud syncing.",
+    //   tags: ["React", "Firebase", "DnD Kit", "Tailwind"],
+    //   image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=800"
+    // },
+    // {
+    //   title: "DAO Voting System",
+    //   category: "Blockchain",
+    //   description: "Decentralized Autonomous Organization governance portal allowing token holders to create and vote on proposals.",
+    //   tags: ["Solidity", "React", "Graph Protocol"],
+    //   image: "https://images.unsplash.com/photo-1639322537228-ad7117a394bc?auto=format&fit=crop&q=80&w=800"
+    // },
+    // {
+    //   title: "Tech Blog Platform",
+    //   category: "Next.js / Headless CMS",
+    //   description: "Modern blog built with Next.js and Contentful, featuring static generation for lightning-fast page loads.",
+    //   tags: ["Next.js", "Contentful", "GraphQL"],
+    //   image: "https://images.unsplash.com/photo-1499750310159-52f0f834631b?auto=format&fit=crop&q=80&w=800"
+    // },
+    // {
+    //   title: "Fitness Tracking App",
+    //   category: "React Native",
+    //   description: "Cross-platform mobile application for tracking workouts and nutrition with social sharing features.",
+    //   tags: ["React Native", "Expo", "Node.js"],
+    //   image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=800"
+    // }
   ];
 
+
+
+
+
+
+
+  // FORM HANDLING
+
+
+
+
+const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  message: ""
+});
+
+const handleChange = (e) => {
+  const { name, value } = e.target;
+  setFormData((prev) => ({ ...prev, [name]: value }));
+};
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+  emailjs.send(
+    "service_x1ec9dp",    // Replace with your EmailJS service ID
+    "template_0yxag4n",   // Replace with your EmailJS template ID
+    formData,
+    "qRcDGSL9YNWDjdYSi"     // Replace with your EmailJS public key
+  )
+  .then(() => {
+    alert("Message sent successfully!");
+    setFormData({ name: "", email: "", message: "" });
+  })
+  .catch((error) => {
+    console.error("EmailJS Error:", error);
+    alert("Failed to send message. Try again later.");
+  });
+};
+
+
+  // FORM HANDLINGG
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-blue-200 selection:text-blue-900">
       
@@ -410,10 +454,10 @@ const Portfolio = () => {
                   "Incredible attention to detail on our Web3 project. Israel handled the smart contract integration perfectly and the React frontend is buttery smooth. Highly recommended for any blockchain related work."
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 font-bold">SM</div>
+                  <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 font-bold">ML</div>
                   <div>
-                    <div className="font-bold text-slate-900">Sarah Miller</div>
-                    <div className="text-xs text-slate-500">Founder, DeFi Connect</div>
+                    <div className="font-bold text-slate-900"> Matteo Lenny</div>
+                    <div className="text-xs text-slate-500">Pugcoin CEO</div>
                   </div>
                 </div>
               </div>
@@ -422,43 +466,78 @@ const Portfolio = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-6 bg-slate-900 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Let's Build Something Great Together</h2>
-          <p className="text-slate-400 mb-10 max-w-xl mx-auto">
-            Whether you need a custom web app, a blockchain solution, or an e-commerce overhaul, I'm ready to help you achieve your goals.
-          </p>
-          
-          <div className="bg-white/5 p-8 rounded-3xl backdrop-blur-sm border border-white/10">
-            <form className="space-y-4 max-w-md mx-auto text-left">
-              <div>
-                <label className="block text-sm font-medium text-slate-300 mb-1">Name</label>
-                <input type="text" className="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500" placeholder="Your Name" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-slate-300 mb-1">Email</label>
-                <input type="email" className="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500" placeholder="your@email.com" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-slate-300 mb-1">Message</label>
-                <textarea rows="4" className="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500" placeholder="Tell me about your project..."></textarea>
-              </div>
-              <button className="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg transition-colors">
-                Send Message
-              </button>
-            </form>
-          </div>
+   {/* Contact Section */}
+<section id="contact" className="py-20 px-6 bg-slate-900 text-white">
+  <div className="max-w-4xl mx-auto text-center">
+    <h2 className="text-3xl md:text-4xl font-bold mb-6">Let's Build Something Great Together</h2>
+    <p className="text-slate-400 mb-10 max-w-xl mx-auto">
+      Whether you need a custom web app, a blockchain solution, or an e-commerce overhaul, I'm ready to help you achieve your goals.
+    </p>
 
-          <div className="mt-12 flex justify-center gap-8">
-             <a href="#" className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
-                <Mail className="w-5 h-5" /> contact@israel.dev
-             </a>
-             <a href="#" className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
-                <Globe className="w-5 h-5" /> Lagos Island, Nigeria
-             </a>
-          </div>
+    <div className="bg-white/5 p-8 rounded-3xl backdrop-blur-sm border border-white/10">
+      <form 
+        className="space-y-4 max-w-md mx-auto text-left" 
+        onSubmit={handleSubmit} // Form submission now calls EmailJS
+      >
+        <div>
+          <label className="block text-sm font-medium text-slate-300 mb-1">Name</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            className="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500"
+            placeholder="Your Name"
+            required
+          />
         </div>
-      </section>
+
+        <div>
+          <label className="block text-sm font-medium text-slate-300 mb-1">Email</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500"
+            placeholder="your@email.com"
+            required
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-slate-300 mb-1">Message</label>
+          <textarea
+            rows="4"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            className="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500"
+            placeholder="Tell me about your project..."
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg transition-colors"
+        >
+          Send Message
+        </button>
+      </form>
+    </div>
+
+    <div className="mt-12 flex justify-center gap-8">
+      <a href="mailto:israelthedev278@gmail.com" className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
+        <Mail className="w-5 h-5" /> israelthedev278@gmail.com
+      </a>
+      <a href="#" className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
+        <Globe className="w-5 h-5" /> Lagos Island, Nigeria
+      </a>
+    </div>
+  </div>
+</section>
+
 
       <footer className="py-8 bg-slate-950 text-slate-500 text-sm text-center">
         <p>&copy; {new Date().getFullYear()} Israel O. All rights reserved.</p>
