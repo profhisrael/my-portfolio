@@ -97,7 +97,7 @@ const Portfolio = () => {
       category: "Cryptocurrency | Blockchain | ICO",
       description: "A presale website built on the Ethereum chain that allows users to buy with ETH and USDT smoothly, with vesting and token claim options. Multilevel/phase presale website.",
       tags: ["Solidity", "Smart Contract", "Presale", "ICO"],
-      image: "public/pugcoin-presale.png"
+      image: "/pugcoin-presale.png"
     },
     // {
     //   title: "Crypto Wallet Integration",
