@@ -57,25 +57,25 @@ const Portfolio = () => {
   // --- PROJECT LIST EXPANDED TO 12 ITEMS ---
   const projects = [
     {
-      title: "DeFi Exchange Dashboard",
+      title: "BTCINU Presale Website",
       category: "Web3 / React",
-      description: "A decentralized exchange interface built with React and Web3.js, featuring real-time token swaps and wallet integration.",
-      tags: ["React", "Web3.js", "Tailwind", "Solidity"],
-      image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=800"
+      description: "A Complete Presale website for BTCINU built on the Ethereum blockchain, raising over $687,000 in a fully sold-out token sale.",
+      tags: ["React", "Web3.js", "CSS", "Ether.js"],
+      image: "./public/btcinu.png"
     },
     {
       title: "Luxury Fashion E-Commerce",
       category: "Shopify / Liquid",
       description: "Custom Shopify theme development for a high-end fashion brand, resulting in a 40% increase in mobile conversions.",
       tags: ["Shopify", "Liquid", "JS", "CSS3"],
-      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800"
+      image: "./public/landpage3.png"
     },
     {
-      title: "SaaS Analytics Platform",
-      category: "MERN Stack",
-      description: "Full-stack analytics dashboard helping businesses track user engagement. Built with the MERN stack for scalability.",
-      tags: ["MongoDB", "Express", "React", "Node.js"],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
+      title: "Cirqle Landing Page",
+      category: "Custom Website",
+      description: "A custom-built landing page optimized for showcasing and linking mobile apps on the Play Store and App Store.",
+      tags: ["Javascript", "Tailwind", "React", "FIGMA-to-Code"],
+      image: "./public/Landingpage.png"
     },
     {
       title: "NFT Marketplace",
@@ -329,7 +329,7 @@ const Portfolio = () => {
                 A selection of projects that showcase my skills in Full-Stack, E-Commerce, and Blockchain development.
               </p>
             </div>
-            <a href="#" className="text-blue-600 font-semibold flex items-center hover:gap-2 transition-all">
+            <a href="https://drive.google.com/drive/folders/1RBpkcaHwzH17Cxs3QZATXxOhB3M4w-m4" target='_blank' className="text-blue-600 font-semibold flex items-center hover:gap-2 transition-all">
               View All Projects <ChevronRight className="w-4 h-4 ml-1" />
             </a>
           </div>
@@ -343,7 +343,7 @@ const Portfolio = () => {
                   <img 
                     src={project.image} 
                     alt={project.title}
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-500"
                   />
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors"></div>
@@ -366,9 +366,13 @@ const Portfolio = () => {
                         </span>
                       ))}
                     </div>
-                    <a href="#" className="inline-flex items-center text-sm font-semibold text-slate-900 hover:text-blue-600 transition-colors">
+
+                      {/* Disable the External Link on the Portolio Cards */}
+                    {/* <a href="#" className="inline-flex items-center text-sm font-semibold text-slate-900 hover:text-blue-600 transition-colors">
                       View Case Study <ExternalLink className="w-4 h-4 ml-2" />
-                    </a>
+                    </a> */}
+
+
                   </div>
                 </div>
               </div>
