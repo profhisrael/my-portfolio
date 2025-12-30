@@ -275,9 +275,9 @@ const handleSubmit = (e) => {
             </div>
 
             <div className="pt-8 flex gap-6 text-slate-400">
-              <a href="#" className="hover:text-blue-600 transition-colors"><Github className="w-6 h-6" /></a>
-              <a href="#" className="hover:text-blue-600 transition-colors"><Linkedin className="w-6 h-6" /></a>
-              <a href="mailto:contact@example.com" className="hover:text-blue-600 transition-colors"><Mail className="w-6 h-6" /></a>
+              <a href="https://github.com/profhisrael" className="hover:text-blue-600 transition-colors"><Github className="w-6 h-6" /></a>
+              <a href="https://ng.linkedin.com/in/israel-ojeyinka-01564b229" className="hover:text-blue-600 transition-colors"><Linkedin className="w-6 h-6" /></a>
+              <a href="mailto:israelthedev278@gmail.com" className="hover:text-blue-600 transition-colors"><Mail className="w-6 h-6" /></a>
             </div>
           </div>
 
