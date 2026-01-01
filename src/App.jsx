@@ -14,13 +14,25 @@ import {
   Terminal,
   Cpu,
   Star,
-  MessageCircle
+  MessageCircle,
+  Sparkles 
 } from 'lucide-react';
 
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showWelcomeModal, setShowWelcomeModal] = useState(true); 
+   const [clientName, setClientName] = useState(''); 
 
+   useEffect(() => {
+    // Check the URL for a specific name (e.g., ?name=John)
+    const params = new URLSearchParams(window.location.search);
+    const nameFromUrl = params.get('name');
+    
+    if (nameFromUrl) {
+      setClientName(nameFromUrl);
+    }
+  }, []);
   // Handle scroll effects
   useEffect(() => {
     const handleScroll = () => {
@@ -185,9 +197,75 @@ const handleSubmit = (e) => {
 };
 
 
+
+
+
+
+
+
+// <--- COPY THIS FUNCTION START --->
+  const handleExplorePortfolio = () => {
+    setShowWelcomeModal(false);
+    const portfolioSection = document.getElementById('portfolio');
+    if (portfolioSection) {
+      setTimeout(() => {
+        portfolioSection.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  };
+  // <--- COPY THIS FUNCTION END --->
   // FORM HANDLINGG
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-blue-200 selection:text-blue-900">
+      
+{/* <--- PASTE THIS MODAL BLOCK START ---> */}
+      {showWelcomeModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-slate-900/70 backdrop-blur-sm transition-opacity"
+            onClick={() => setShowWelcomeModal(false)}
+          ></div>
+          
+          {/* Modal Content */}
+          <div className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full p-8 text-center animate-[fade-in-up_0.5s_ease-out]">
+            <button 
+              onClick={() => setShowWelcomeModal(false)}
+              className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner border border-blue-100">
+              <Sparkles className="w-8 h-8 animate-pulse" />
+            </div>
+
+            {/* DYNAMIC WELCOME HEADER */}
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3 tracking-tight">
+              {clientName ? (
+                <>Welcome <span className="text-blue-600 capitalize">{clientName}</span> to Israel's Workspace!</>
+              ) : (
+                "Welcome to Israel's Workspace!"
+              )}
+            </h2>
+            
+            <p className="text-slate-600 mb-8 leading-relaxed">
+              Hi {clientName ? clientName : "there"}! I'm <span className="font-semibold text-slate-900">Israel</span>. 
+              I realized looking at portfolios can be boring, so I built this interactive workspace to show you exactly what I can do for your project.
+            </p>
+
+            <button 
+              onClick={handleExplorePortfolio}
+              className="w-full py-4 bg-blue-600 text-white text-lg font-bold rounded-xl hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 transform hover:-translate-y-1 flex items-center justify-center gap-2"
+            >
+              Check Israel's Portfolio Now
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+      )}
+      {/* <--- PASTE THIS MODAL BLOCK END ---> */}
+
       
       {/* Navigation */}
       <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>

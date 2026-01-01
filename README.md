@@ -1,5 +1,12 @@
 # React + Vite
 
+Custom Link
+Generic Link: yoursite.com -> Shows "Welcome to Israel's Workspace!"
+
+Custom Link: yoursite.com/?name=John -> Shows "Welcome John to Israel's Workspace!"
+
+
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
