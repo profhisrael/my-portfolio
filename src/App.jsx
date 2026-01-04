@@ -609,9 +609,9 @@ const handleSubmit = (e) => {
       <a href="mailto:israelthedev278@gmail.com" className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
         <Mail className="w-5 h-5" /> israelthedev278@gmail.com
       </a>
-      <a href="#" className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
+      {/* <a href="#" className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
         <Globe className="w-5 h-5" /> Lagos Island, Nigeria
-      </a>
+      </a> */}
     </div>
   </div>
 </section>
