@@ -111,13 +111,16 @@ const Portfolio = () => {
       tags: ["Solidity", "Smart Contract", "Presale", "ICO"],
       image: "/pugcoin-presale.png"
     },
-    // {
-    //   title: "Crypto Wallet Integration",
-    //   category: "Web3",
-    //   description: "Seamless connection module for MetaMask and WalletConnect, supporting multiple chains (ETH, BSC, Polygon).",
-    //   tags: ["Web3.js", "Ethers.js", "React Hooks"],
-    //   image: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&q=80&w=800"
-    // },
+    {
+      title: "Secured Class Dashboard",
+      category: "Custom Website Solution",
+      description: "Secure React dashboard featuring robust anti-piracy tools: dynamic watermarks, blocked inputs, and overlays to fully protect video content.",
+      tags: ["React", "Tailwind CSS", "Firebase", "Typescript"],
+      image: "/secured-class.png"
+      
+    },
+
+
     // {
     //   title: "Organic Food Store",
     //   category: "Shopify",
