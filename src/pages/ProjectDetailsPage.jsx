@@ -9,13 +9,11 @@ import {
   Bitcoin,
   LayoutGrid
 } from 'lucide-react';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
 
 const ProjectDetailsPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const auth = getAuth();
   const db = getFirestore();
 
   // Category Labels Mapping
@@ -31,16 +29,10 @@ const ProjectDetailsPage = () => {
   const [project, setProject] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const unsubscribeAuth = onAuthStateChanged(auth, setUser);
-    return unsubscribeAuth;
-  }, [auth]);
 
   useEffect(() => {
     const fetchProject = async () => {
-      if (!user || !id) return;
+      if (!id) return;
 
       try {
         const projectDoc = await getDoc(doc(db, 'portfolio_projects', id));
@@ -58,7 +50,7 @@ const ProjectDetailsPage = () => {
     };
 
     fetchProject();
-  }, [user, id, db, navigate]);
+  }, [id, db, navigate]);
 
   const getCategoryIcon = (category) => {
     const normalizedCategory = categoryLabels[category] || category;
