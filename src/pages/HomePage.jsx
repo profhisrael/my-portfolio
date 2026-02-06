@@ -13,7 +13,8 @@ import {
   Star,
   MessageCircle,
   Sparkles,
-  X
+  X,
+  Loader2
 } from 'lucide-react';
 
 const HomePage = () => {
@@ -23,6 +24,8 @@ const HomePage = () => {
     email: "",
     message: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
   
   // Typewriter Effect State
   const [displayText, setDisplayText] = useState('');
@@ -63,23 +66,30 @@ const HomePage = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
 
-    emailjs.send(
-      "service_x1ec9dp",
-      "template_0yxag4n",
-      formData,
-      "qRcDGSL9YNWDjdYSi"
-    )
-      .then(() => {
-        alert("Message sent successfully!");
-        setFormData({ name: "", email: "", message: "" });
-      })
-      .catch((error) => {
-        console.error("EmailJS Error:", error);
-        alert("Failed to send message. Try again later.");
-      });
+    try {
+      await emailjs.send(
+        "service_x1ec9dp",
+        "template_0yxag4n",
+        formData,
+        "qRcDGSL9YNWDjdYSi"
+      );
+      setSubmitStatus('success');
+      setFormData({ name: "", email: "", message: "" });
+      // Reset success message after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setSubmitStatus('error');
+      // Reset error message after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleExplorePortfolio = () => {
@@ -364,9 +374,10 @@ const HomePage = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500"
+                  className="w-full px-4 py-3 rounded-lg bg-slate-800/50 backdrop-blur border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
                   placeholder="Your Name"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -377,9 +388,10 @@ const HomePage = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500"
+                  className="w-full px-4 py-3 rounded-lg bg-slate-800/50 backdrop-blur border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
                   placeholder="your@email.com"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -390,18 +402,43 @@ const HomePage = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500"
+                  className="w-full px-4 py-3 rounded-lg bg-slate-800/50 backdrop-blur border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-500 transition-colors resize-none"
                   placeholder="Tell me about your project..."
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg transition-colors"
+                disabled={isSubmitting}
+                className={`w-full py-4 text-white font-bold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 ${
+                  submitStatus === 'success'
+                    ? 'bg-green-600 hover:bg-green-700'
+                    : submitStatus === 'error'
+                    ? 'bg-red-600 hover:bg-red-700'
+                    : 'bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500'
+                } ${isSubmitting ? 'opacity-75 cursor-not-allowed' : 'hover:shadow-lg hover:shadow-cyan-500/20'}`}
               >
-                Send Message
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Sending...
+                  </>
+                ) : submitStatus === 'success' ? (
+                  '✓ Message Sent!'
+                ) : submitStatus === 'error' ? (
+                  '✗ Failed. Try Again'
+                ) : (
+                  'Send Message'
+                )}
               </button>
+              {submitStatus === 'success' && (
+                <p className="text-green-400 text-sm text-center mt-2">Thank you! I'll get back to you soon.</p>
+              )}
+              {submitStatus === 'error' && (
+                <p className="text-red-400 text-sm text-center mt-2">Something went wrong. Please try again or email me directly.</p>
+              )}
             </form>
           </div>
 
