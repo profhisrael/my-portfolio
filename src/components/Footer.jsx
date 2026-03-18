@@ -11,7 +11,7 @@ function Footer() {
 
       {/* Floating Contact Button */}
       <a 
-        href="https://www.upwork.com/freelancers/~0166141be829840d31?mp_source=share" 
+        href="t.me/profhisrael" 
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 bg-green-500 text-white px-6 py-3 rounded-full shadow-lg hover:bg-green-600 hover:scale-105 transition-all duration-300 font-bold flex items-center gap-2 border-2 border-white/20"
