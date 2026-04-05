@@ -259,7 +259,7 @@ const HomePage = () => {
               </div>
               <h3 className="text-xl font-extrabold text-slate-900 mb-6">E-Commerce & CMS</h3>
               <ul className="space-y-4">
-                {["Shopify Development", "WordPress", "Webflow", "Store Optimization", "Theme Customization"].map((item, idx) => (
+                {["Shopify Development", "WordPress", "Webflow", "SquareSpace", "Store Optimization", "Theme Customization"].map((item, idx) => (
                   <li key={idx} className="flex items-center text-slate-600 font-medium text-sm">
                     <div className="w-1.5 h-1.5 rounded-full bg-green-600 mr-3"></div>
                     {item}
